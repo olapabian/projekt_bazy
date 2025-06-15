@@ -1,0 +1,17 @@
+# Instalacja Node.js i npm
+sudo apt update
+sudo apt install nodejs npm -y
+
+# Tworzenie aplikacji React
+npx create-react-app klient-wodociagi
+
+cd klient-wodociagi
+
+#  Uruchomienie lokalne Reacta
+npm start
+
+#  Zmiana adresu backendu w pliku .env
+# REACT_APP_API_URL=http://192.168.1.20:8000/api/
+
+#  Budowanie produkcyjnej wersji aplikacji
+npm run build

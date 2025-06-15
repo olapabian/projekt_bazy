@@ -1,0 +1,33 @@
+# Instalacja zależności
+sudo apt update
+sudo apt install python3-pip python3-venv -y
+
+#  Tworzenie środowiska i aktywacja
+python3 -m venv venv
+source venv/bin/activate
+
+#  Instalacja Django i psycopg2
+pip install django psycopg2-binary djangorestframework
+
+# Tworzenie projektu Django
+django-admin startproject backend
+
+#  Konfiguracja połączenia z bazą (w settings.py)
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'wodociagi',
+#         'USER': 'django_user',
+#         'PASSWORD': 'haslo',
+#         'HOST': '192.168.1.30',
+#         'PORT': '5432',
+#     }
+# }
+
+#  Migracje
+cd backend
+python manage.py makemigrations
+python manage.py migrate
+
+# Uruchomienie serwera testowego
+python manage.py runserver 0.0.0.0:8000

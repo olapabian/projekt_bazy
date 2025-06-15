@@ -1,0 +1,23 @@
+#  Instalacja PostgreSQL
+sudo apt update
+sudo apt install postgresql postgresql-contrib -y
+
+#  Sprawdzenie statusu usługi
+systemctl status postgresql
+
+# Tworzenie bazy i użytkownika
+sudo -u postgres psql -c "CREATE DATABASE wodociagi;"
+sudo -u postgres psql -c "CREATE USER django_user WITH PASSWORD 'haslo';"
+sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON DATABASE wodociagi TO django_user;"
+
+#  Konfiguracja dostępu - edycja pg_hba.conf (komenda pokazująca gdzie plik się znajduje)
+sudo find / -name pg_hba.conf
+
+# Restart PostgreSQL po konfiguracji
+sudo systemctl restart postgresql
+
+#  Podgląd aktywnych połączeń
+sudo -u postgres psql -c "SELECT datname, usename, client_addr FROM pg_stat_activity;"
+
+# Sprawdzenie wersji
+psql --version
