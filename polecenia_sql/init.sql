@@ -1,3 +1,6 @@
+CREATE DATABASE wodociagi
+
+
 CREATE SCHEMA uzytkownicy;
 
 CREATE TABLE uzytkownicy.adresy (
@@ -54,3 +57,14 @@ CREATE TABLE rozliczenia.faktury (
     oplacona boolean
 );
 
+CREATE ROLE admin;
+CREATE ROLE inspektorzy;
+
+GRANT ALL ON SCHEMA rozliczenia TO admin;
+
+GRANT USAGE ON SCHEMA rozliczenia TO inspektorzy;
+
+GRANT SELECT ON ALL TABLES IN SCHEMA rozliczenia TO inspektorzy;
+
+ALTER DEFAULT PRIVILEGES IN SCHEMA rozliczenia
+GRANT SELECT ON TABLES TO inspektorzy;
