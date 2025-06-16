@@ -68,3 +68,14 @@ GRANT SELECT ON ALL TABLES IN SCHEMA rozliczenia TO inspektorzy;
 
 ALTER DEFAULT PRIVILEGES IN SCHEMA rozliczenia
 GRANT SELECT ON TABLES TO inspektorzy;
+
+
+GRANT ALL ON SCHEMA uzytkownicy TO admin;
+
+GRANT USAGE ON SCHEMA uzytkownicy TO inspektorzy;
+
+GRANT SELECT ON ALL TABLES IN SCHEMA uzytkownicy TO inspektorzy;
+
+
+ALTER DEFAULT PRIVILEGES IN SCHEMA uzytkownicy
+GRANT SELECT ON TABLES TO inspektorzy;
